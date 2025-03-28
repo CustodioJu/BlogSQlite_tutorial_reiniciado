@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/static/styles/Atv_Formulario.css" />
 
     <!-- link JS -->
-    <script src="/static/scripts/" defer></script>
+    <!-- <script src="/static/scripts/Atv_Formulario.js" defer></script> -->
   </head>
   <body>
     <section class="container">
@@ -20,24 +20,36 @@
           descubra novos lugares ao redor do mundo!
         </p>
       </div>
-      <form id="cadastro">
+      <form id="cadastro" method="post" action="cadastro">
         <div class="titulo">
           <h1>Cadastre-se</h1>
           <p>Preencha os campos abaixo e torne-se parte da nossa comunidade.</p>
         </div>
 
         <div class="input_data">
-          <input type="text" id="nome" name="nome" required />
+          <input type="text" id="nome" name="username" value="Julia" required />
           <label for="">Nome</label>
         </div>
 
         <div class="input_data">
-          <input type="email" id="email" name="email" required />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value="julia@gmail.com"
+            required
+          />
           <label for="">Email</label>
         </div>
 
         <div class="input_data">
-          <input type="password" id="senha" name="senha" required />
+          <input
+            type="password"
+            id="senha"
+            name="password"
+            value="Julia22@"
+            required
+          />
           <label for="">Senha</label>
         </div>
 
@@ -46,23 +58,36 @@
             type="password"
             id="confirmaSenha"
             name="confirmaSenha"
+            value="Julia22@"
             required
           />
           <label for="">Confirmar Senha</label>
         </div>
 
         <div class="input_data">
-          <input type="tel" id="tel" name="tel" required />
+          <input
+            type="tel"
+            id="tel"
+            name="celular"
+            value="19986002433"
+            required
+          />
           <label for="">Celular</label>
         </div>
 
         <div class="input_data">
-          <input type="text" id="CPF" name="CPF" required />
+          <input
+            type="text"
+            id="CPF"
+            name="cpf"
+            value="478.077.678-39"
+            required
+          />
           <label for="">CPF</label>
         </div>
 
         <div class="input_data">
-          <input type="text" id="RG" name="RG" required />
+          <input type="text" id="RG" name="rg" value="54.678.987-1" required />
           <label for="">RG</label>
         </div>
 
