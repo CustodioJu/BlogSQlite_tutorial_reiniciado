@@ -1,17 +1,20 @@
-@font-face {
-  font-family: "font1";
-  src: url("/static/fontes/Copperplate.otf");
-}
+/* Styles.css para colocar MENU */
 
 @font-face {
-  font-family: "font2";
+  font-family: "JoseFins";
   src: url("/static/fontes/JosefinSans.ttf");
 }
 
+@font-face {
+  font-family: "Copperplate";
+  src: url("/static/fontes/Copperplate.otf");
+}
+
 * {
-  box-sizing: border-box;
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
 }
 
 body {
@@ -19,8 +22,130 @@ body {
   background-color: #375534;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+footer {
+  width: 100%;
+  height: 90px;
+  background-color: #0f2a1d;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer p {
+  color: #fff;
+  font-size: 2em;
+  font-style: italic;
+  letter-spacing: 1.5px;
+}
+
+header {
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #0f2a1d;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  color: #fff;
+  font-size: 3em;
+  letter-spacing: 1.5px;
+}
+
+header nav a {
+  color: #fff;
+  font-size: 1.5em;
+  margin-right: 16px;
+}
+
+header nav a:hover {
+  color: #e3eed4;
+}
+
+.container_rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 100vh;
+  background-color: transparent;
+}
+
+.cloud {
+  position: absolute;
+  width: 250px;
+  height: 100px;
+  background: url("/static/imagens/nuvem.png") center / cover no-repeat;
+  filter: drop-shadow(2px 2px 20px #e3eed4);
+}
+
+.cloud:nth-child(1) {
+  top: 2.5%;
+  left: 5%;
+}
+
+.cloud:nth-child(2) {
+  z-index: 3000;
+  top: 2.5%;
+  left: 24%;
+}
+
+.cloud:nth-child(3) {
+  z-index: 3000;
+  top: 9.5%;
+  left: 5%;
+}
+
+.rain {
+  background-color: #e3eed4;
+  width: 5px;
+  height: 5px;
+  border-radius: 0 50% 50% 50%;
+  transform: rotate(45deg);
+  box-shadow: inset -25px 10px 0px -10px #fefefe;
+  z-index: 1000;
+  position: absolute;
+  top: 90px;
+
+  transform-origin: bottom;
+  animation: animate 2s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(0) scaleY(1);
+    opacity: 1;
+  }
+
+  60% {
+    transform: translateY(80vh) scaleY(1);
+    opacity: 1;
+  }
+
+  80% {
+    transform: translateY(80vh) scaleY(0.2);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(80vh) scaleY(0.2);
+    opacity: 0;
+  }
 }
 
 .container {
@@ -28,7 +153,7 @@ body {
   height: 80%;
   background-color: #e3eed4;
   border-radius: 30px;
-  box-shadow: 2px -10px 50px #0f2a1d;
+  box-shadow: 2px -10px 35px #0f2a1d;
 
   display: grid;
   grid-template-columns: 40% 60%;
@@ -39,7 +164,7 @@ body {
   overflow: hidden;
 }
 
-.img_container {
+.image_container {
   width: 100%;
   height: 100%;
   background: url("/static/imagens/wallpaper.jpg") center / cover no-repeat;
@@ -47,42 +172,42 @@ body {
 
   padding-left: 10%;
   position: relative;
+  overflow: hidden;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.img_container::before {
+.image_container::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 1;
-  border-radius: 30px;
 }
 
-.img_container h1,
-.img_container p {
+.image_container h1,
+.image_container p {
   position: relative;
   z-index: 2;
   color: #e3eed4;
 }
 
-.img_container h1 {
-  font-family: "font2";
+.image_container h1 {
+  font-family: "JoseFins";
   font-size: 50px;
 }
 
-.img_container p {
-  font-family: "font1";
-  font-size: 10px;
+.image_container p {
+  font-family: "Copperplate";
+  font-size: 13px;
 }
 
-#cadastro {
+#cadastroForm {
   width: 80%;
   height: 90%;
 
@@ -93,25 +218,26 @@ body {
   gap: 30px;
 }
 
-#cadastro h1,
-#cadastro p {
+#cadastroForm h1,
+#cadastroForm p {
   width: 100%;
   text-align: center;
 }
-#cadastro h1 {
-  font-family: "font2";
+
+#cadastroForm h1 {
+  font-family: "JoseFins";
   font-size: 2em;
   color: #0f2a1d;
 }
 
-#cadastro p {
-  font-family: "font2";
-  font-size: 13px;
+#cadastroForm p {
+  font-family: "Copperplate";
+  font-size: 11px;
   font-style: italic;
   color: #0f2a1d;
 }
 
-#cadastro .input_data {
+#cadastroForm .input_data {
   position: relative;
   width: calc(50% - 15px);
   display: flex;
@@ -119,18 +245,20 @@ body {
   color: #0f2a1d;
 }
 
-#cadastro .input_data:nth-child(8) {
+#cadastroForm .input_data:nth-child(8) {
   width: 100%;
 }
 
-#cadastro .input_data input {
+#cadastroForm .input_data input {
   position: relative;
   z-index: 2;
-  font-family: "font1";
+  font-family: "Copperplate";
   font-size: 11px;
   margin-top: 5px;
   height: 30px;
+
   padding: 5px 10px;
+
   border: none;
   outline: 0;
   background-color: transparent;
@@ -139,8 +267,8 @@ body {
   color: #0f2a1d;
 }
 
-#cadastro .input_data label {
-  font-family: "font1";
+#cadastroForm .input_data label {
+  font-family: "Copperplate";
   font-size: 11px;
   position: absolute;
   top: 50%;
@@ -151,24 +279,25 @@ body {
   color: #0f2a1d;
 }
 
-#cadastro .input_data input:focus + label,
-#cadastro .input_data input:valid + label {
+#cadastroForm .input_data input:focus + label,
+#cadastroForm .input_data input:valid + label {
   top: -10%;
   left: 0;
 }
 
-#cadastro .btnArea {
+#cadastroForm .btnArea {
   width: 100%;
 }
 
-#cadastro .btnArea .msgError {
+#cadastroForm .btnArea .msgError {
   margin-bottom: 10px;
   height: 25px;
-  color: red;
-  font-size: italic;
+  color: #ff0000;
+  font-style: italic;
 }
-#cadastro .btnArea button {
-  font-family: "font1";
+
+#cadastroForm .btnArea button {
+  font-family: "Copperplate";
   border: 1px solid #0f2a1d;
   width: 100%;
   padding: 10px 20px;
@@ -179,8 +308,9 @@ body {
   letter-spacing: 1.5px;
 }
 
-#cadastro .btnArea button:hover {
+#cadastroForm .btnArea button:hover {
   background-color: transparent;
   border: 1px solid #0f2a1d;
   color: #0f2a1d;
+  transition: 0.7s;
 }
