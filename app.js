@@ -1,3 +1,5 @@
+console.log("ola vida");
+
 // Criação da biblioteca
 
 const express = require("express"); // importa livraria do EXPRESS
