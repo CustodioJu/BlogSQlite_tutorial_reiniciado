@@ -50,6 +50,14 @@ app.get("/", (req, res) => {
   res.redirect("/cadastro"); // Redirecionamento de rota
 });
 
+app.get("/usuarios", (req, res) => {
+  const query = "SELECT * FROM users";
+  db.all(query, (err, row) => {
+    console.log(`GET /usuarios ${JSON.stringify(row)}`);
+    res.send("Lista de usuários!");
+  });
+});
+
 app.get("/cadastro", (req, res) => {
   console.log("GET/cadastro");
   // Rota raiz do meu servidor, acesse o browser com o endereço http://localhost:3000/cadastro
