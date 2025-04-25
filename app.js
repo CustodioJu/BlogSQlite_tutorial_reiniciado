@@ -5,6 +5,8 @@ const sqlite3 = require("sqlite3"); // importa livraria do sqlite3
 const bodyParser = require("body-parser"); // importa biblioteca express
 const PORT = 8000; // Porta TCP do servidor HTTP da aplicação
 
+let config = { titulo: "Blog_Tutorial", rodape: "" };
+
 const app = express(); // Instância para o uso do EXPRESS
 
 const db = new sqlite3.Database("user.db"); // Instância para o uso do SQlite3
@@ -47,7 +49,8 @@ app.get("/", (req, res) => {
   console.log("GET/index");
   // Rota raiz do meu servidor, acesse o browser com o endereço http://localhost:3000/
   //res.send(index);
-  res.redirect("/cadastro"); // Redirecionamento de rota
+  // res.redirect("/cadastro", { titulo: "TutorialBlog" }); // Redirecionamento de rota
+  res.render("pages/cadastro", config);
 });
 
 app.get("/usuarios", (req, res) => {
@@ -61,7 +64,7 @@ app.get("/usuarios", (req, res) => {
 app.get("/cadastro", (req, res) => {
   console.log("GET/cadastro");
   // Rota raiz do meu servidor, acesse o browser com o endereço http://localhost:3000/cadastro
-  res.render("cadastro");
+  res.render("pages/cadastro", config);
 });
 
 app.get("/home", (req, res) => {
@@ -73,18 +76,24 @@ app.get("/home", (req, res) => {
 app.get("/sobre", (req, res) => {
   console.log("GET/sobre");
   // Rota raiz do meu servidor, acesse o browser com o endereço http://localhost:3000/sobre
-  res.render("sobre");
+  res.render("pages/sobre", config);
 });
 
 app.get("/login", (req, res) => {
   console.log("GET/login");
   // Rota raiz do meu servidor, acesse o browser com o endereço http://localhost:3000/login
-  res.render("login");
+  res.render("pages/login", config);
 });
 
 app.post("/login", (req, res) => {
   console.log("POST/login");
   res.send("Login ainda não implementado.");
+});
+
+app.get("/dashboard", (req, res) => {
+  console.log("GET/dashboard");
+  // Rota raiz do meu servidor, acesse o browser com o endereço http://localhost:3000/sobre
+  res.render("pages/dashboard", config);
 });
 
 app.post("/cadastro", (req, res) => {

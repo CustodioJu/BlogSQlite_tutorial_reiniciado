@@ -1,18 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atv - Formulário</title>
+  <%- include("../partials/head"); %>
 
-    <!-- Link CSS -->
-    <link rel="stylesheet" href="/static/styles/Atv_Formulario.css" />
-
-    <!-- link JS -->
-    <!-- <script src="/static/scripts/Atv_Formulario.js" defer></script> -->
-  </head>
   <body>
-    <%- include("menu") %> <%- include("footer") %>
+    <%- include("../partials/menu") %>
 
     <section class="container">
       <div class="image_container">
@@ -22,7 +13,7 @@
           descubra novos lugares ao redor do mundo!
         </p>
       </div>
-      <form id="cadastroForm" method="post" action="cadastro">
+      <form id="cadastroForm" method="post" action="/cadastro">
         <div class="titulo">
           <h1>Cadastre-se</h1>
           <p>Preencha os campos abaixo e torne-se parte da nossa comunidade.</p>
@@ -100,6 +91,6 @@
       </form>
     </section>
 
-    <%- include("footer") %>
+    <%- include("../partials/footer") %>
   </body>
 </html>
