@@ -10,11 +10,14 @@
   <tbody>
     <% for (let index = 1; index < 8; index++) { %>
     <tr>
+      <% if(index % 2 == 0) {%>
+
       <td><%= index %></td>
       <td>NOME</td>
       <td>EMAIL</td>
       <td>CELULAR</td>
     </tr>
-    <% } %>
+
+    <% } %> <% } %>
   </tbody>
 </table>
