@@ -96,11 +96,24 @@ app.get("/login", (req, res) => {
   res.render("pages/login", { ...config, req: req });
 });
 
-app.get("/error", (req, res) => {
-  console.log("GET/error");
+app.get("/loginInvalido", (req, res) => {
+  console.log("GET/usuarioinvalido");
   // Rota raiz do meu servidor, acesse o browser com o endereço http://localhost:3000/login
-  res.render("pages/error", { ...config, req: req });
+  res.render("pages/errorUser", { ...config, req: req, error: "Login Inválido" });
 });
+
+app.get("/cadastroInvalido", (req, res) => {
+  console.log("GET/usuarioinvalido");
+  // Rota raiz do meu servidor, acesse o browser com o endereço http://localhost:3000/login
+  res.render("pages/errorUser", { ...config, req: req, error: "Usuário Já Cadastrado ou Cadastro Inválido" });
+});
+
+app.get("/error404", (req, res) => {
+  console.log("GET/usuarioinvalido");
+  // Rota raiz do meu servidor, acesse o browser com o endereço http://localhost:3000/login
+  res.render("pages/errorUser", { ...config, req: req, error: "ERROR 404 -  ROTA NÃO ENCONTRADA" });
+});
+
 
 app.post("/login", (req, res) => {
   console.log("POST/login");
@@ -119,7 +132,7 @@ app.post("/login", (req, res) => {
       res.redirect("/dashboard");
     } // Se não, envie a mensagem de erro (Usuário inválido)
     else {
-      res.send("Usuário inválido.");
+      res.redirect("/loginInvalido");
     }
   });
 });
@@ -167,21 +180,22 @@ app.post("/cadastro", (req, res) => {
   db.get(query, [email, cpf, rg, username], (err, row) => {
     if (err) throw err;
 
+    
+
     if (row) {
       // A variável 'row' irá retornar os dados do banco,
       //  de dados executado através do SQL, variável query
-      res.send("Usuário ja cadastrado, refaça o cadastro");
+      res.redirect("/cadastroInvalido")
     } else {
       // 3. Se o usuário não existe no banco, faça o cadastro
       const insertQuery =
         "INSERT INTO users (username, password, email, celular, cpf, rg) VALUES (?,?,?,?,?,?)";
-      db.run(
-        insertQuery,
-        [username, password, email, celular, cpf, rg],
+      db.run(insertQuery,[username, password, email, celular, cpf, rg],
         (err) => {
+          console.log("ESTOU AQUI!",)
           //INserir a lógica do INSERT
-          if (err) throw err;
-          res.send("Usuário cadastrado, com sucesso");
+          if(err) throw err;
+          res.redirect("/login")
         }
       );
     }
@@ -192,7 +206,7 @@ app.post("/cadastro", (req, res) => {
 });
 
 app.use("*", (req, res) => {
-  res.status(404).render("pages/error", { ...config, req: req });
+  res.redirect("/error404");
 });
 
 // O app.listen() precisa ser SEMPRE ser executado por último. (app.js)
